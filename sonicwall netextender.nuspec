@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    
+    <id>sonicwallnetextender</id>
+    <title>Sonicwall Netextender (Install)</title>
+	<version>10.2.300</version>
+    <authors>SONICWALL</authors>
+	<owners>DJS</owners>
+	<projectUrl>https://www.mysonicwall.com/</projectUrl>
+	<tags>sonicwallnetextender VPNclient Install</tags>
+    <description>Sonicwall VPN Client </description>
+      </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
