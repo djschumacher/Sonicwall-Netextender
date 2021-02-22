@@ -1,14 +1,15 @@
-﻿$ErrorActionPreference = 'Stop'; # stop on all errors
+$ErrorActionPreference = 'Stop'
 
-$packageName= 'sonicwallnetextender'
-$toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$fileLocation = Join-Path $toolsDir 'NXSetupU.exe'
-
+$toolsPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
+. "$toolsPath\Certhelp.ps1"
 Write-Host "Importing necessary certificates..."
 $certificates = Get-ChildItem "$toolsPath\*.cer"
 $certificates | ForEach-Object {
   Import-Certificate -FilePath $_ -CertStoreLocation "Cert:\LocalMachine\TrustedPublisher"
 }
+
+$packageName= 'sonicwallnetextender'
+$fileLocation = Join-Path $toolsPath 'NXSetupU.exe'
 
 $packageArgs = @{
   packageName   = $packageName
@@ -19,5 +20,4 @@ $packageArgs = @{
   validExitCodes= @(0)
 }
 
-Start-ChocolateyProcessAsAdmin Install-ChocolateyInstallPackage @packageArgs
-
+Install-ChocolateyPackage @packageArgs
